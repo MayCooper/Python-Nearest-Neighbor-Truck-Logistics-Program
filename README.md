@@ -220,10 +220,8 @@ All operations are O(1) in space except for _resize, which temporarily requires 
 •	The program includes basic error handling and validation, particularly in user input and file reading operations, which contributes to the overall robustness of the application. Enhancing this aspect with more comprehensive error management and recovery strategies could further improve maintainability.<br><br>
 Overall, the software design of the Routing Program combines efficiency with maintainability through thoughtful architecture, data structure choices, and coding practices. This not only facilitates current operational requirements but also lays a foundation for future enhancements and scalability.<br><br>
 
-<h2>6.  Describe both the strengths and weaknesses of the self-adjusting data structure (e.g., the hash table).</h2><br>
-
+<h2>6.  Describe both the strengths and weaknesses of the self-adjusting data structure (e.g., the hash table).</h2>
 <h3>Strengths</h3><br>
-
 <h4>Dynamic Resizing:</h4><br>
 1.	I find one of the key strengths of the ResizableDict to be its ability to dynamically adjust its size based on the load factor. This ensures that the hash table remains efficient in terms of access, insertion, and deletion operations even as the number of elements grows. By maintaining a balance between the number of elements and the bucket size, it significantly reduces the likelihood of hash collisions, which can degrade performance.<br>
 <h4>Efficient Access Times:</h4>
@@ -234,9 +232,7 @@ Overall, the software design of the Routing Program combines efficiency with mai
 4.	While resizing increases capacity, the hash table only uses space proportional to the number of entries it contains, ensuring that space is not wasted. This space efficiency is critical in environments where memory resources may be constrained.<br>
 
 <h2>Weaknesses</h2>
-<br>
 <h2>Cost of Resizing:</h2><br>
-
 1.	While resizing helps maintain operational efficiency, the resizing operation itself can be costly. It involves rehashing all existing elements into new buckets, which has a time complexity of O(n). During the resizing process, there can be a temporary performance hit, which might affect system responsiveness, especially if the hash table is very large.<br>
 <h4>Worst-Case Time Complexity:</h4><br>
 2.	In the worst case, where many elements hash to the same bucket (high collision scenario), the time complexity for access and update operations can degrade to O(n). While this scenario is less likely with a good hash function and proper load management, it is still a potential weakness that can impact performance under certain conditions.<br>
@@ -247,9 +243,7 @@ Overall, the software design of the Routing Program combines efficiency with mai
 <h4>Handling of Large Data Values:</h4><br>
 5.	If the data elements stored in the hash table are large, the resizing operation can become more resource-intensive, both in terms of time and memory usage. This can be a drawback in systems where data payloads are substantial.<br>
 In summary, the ResizableDict in my Routing Program offers significant strengths in terms of scalability, efficiency, and dynamic sizing, making it well-suited for the program’s needs. However, I am always mindful of its weaknesses, especially regarding performance under high collision conditions and during resizing, to optimize its use and ensure robust system performance.<br>
-
-<h2>7.  Justify the choice of a key for efficient delivery management from the following components:</h2>
-   
+<h2>7.  Justify the choice of a key for efficient delivery management from the following components:</h2><br>
 •	delivery address<br>
 •	delivery deadline<br>
 •	delivery city<br>
