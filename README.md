@@ -64,17 +64,13 @@ Input: List of delivery trucks
 
 1. InitializeHashMap(package_hash_map):
    - Create a resizable hashmap to store package information.
-
 2. ReadPackageDataFromCSVFiles(package_hash_map):
    - Read package data from CSV files (Packages.csv) and load it into the hashmap.
    - Each package is stored with its unique ID as the key and package details as the value.
-
 3. InitializeTrucks(trucks):
    - Initialize delivery trucks with their characteristics such as capacity, speed, starting location, leave time, and assigned packages.
-
 4. AssignPackagesToTrucks(trucks):
    - Assign packages to trucks for delivery based on predetermined assignments.
-
 5. For each truck in trucks:
    5.1. RetrieveUndeliveredPackages(truck):
        - Retrieve undelivered packages for the current truck from the hashmap.
@@ -91,10 +87,8 @@ Input: List of delivery trucks
            - Remove delivered package from the list of undelivered packages.
    5.4. UpdateTruckLeaveTime(truck):
        - Update truck's leave time based on the time it returns after delivering all packages.
-
 6. CalculateTotalMileage(trucks):
    - Sum up the distance traveled by each truck to get the total mileage traveled by all trucks.
-
 7. ProvideUserInterfaceForPackageTracking():
    - Display the main menu of the delivery management system.
    - Prompt the user to begin tracking package status.
