@@ -2,36 +2,36 @@
 The Python Logistics Planner optimizes routing for a delivery service using the Nearest Neighbor Algorithm and a dynamic hash table. This solution minimizes travel distances and adapts to real-time changes, ensuring efficient and timely deliveries. Built in Python, the program features a modular design for scalability and easy maintenance.
 
 <h2>A.	Identify a named self-adjusting algorithm (e.g., nearest neighbor algorithm, greedy algorithm) that could be used to create your program to deliver the packages.</h2>
-
+<br>
 I chose the Nearest Neighbor Algorithm for the Routing Program for its straightforward method that focuses on minimizing travel distances between delivery points. Starting from a central hub, the algorithm efficiently selects the nearest unvisited destination, ensuring routes are planned both logically and efficiently. This approach is not only easy to implement but also highly adaptable to dynamic routing changes, such as varying delivery deadlines and special handling requirements. In the implementation within my deliver_packages function, the algorithm considers the current location of the truck and the destination of each undelivered package, utilizing the distance_between function to determine the shortest path. This significantly optimizes route efficiency, crucial given the constraints of delivering all packages within a limited timeframe and under specific mileage.
-
+<br>
 Moreover, the Nearest Neighbor Algorithm's integration with real-time updates to the truck's state—adjusting the truck's position, the distance traveled, and the delivery time after each stop—ensures the routing dynamically adapts to the ongoing delivery scenario. This dynamic adaptability is vital for maintaining operational efficiency and meeting stringent delivery constraints, such as ensuring that Truck #3 starts its route only after one of the other trucks has completed its deliveries. 
-
+<br>
 My application of this method balances simplicity in execution with the ability to handle the complex logistical challenges of package delivery, demonstrating a robust application of theoretical algorithms to practical, real-world challenges in our delivery logistics domain (Programming Pearls [2nd Edition]   0201657880 - DOKUMEN.PUB, n.d.).
 
 
 <h2>B.	Identify a self-adjusting data structure, such as a hash table, that could be used with the algorithm identified in part A to store the package data</h2>
 
-I have identified a self-adjusting data structure called the "ResizableDict," which is an implementation of a dynamic hash table or hash map. This data structure is particularly suited for use with the package delivery routing algorithm described in the program. The hash table facilitates efficient retrieval and update of package data, which is crucial for the dynamic delivery scheduling and tracking tasks of the delivery service.
+I have identified a self-adjusting data structure called the "ResizableDict," which is an implementation of a dynamic hash table or hash map. This data structure is particularly suited for use with the package delivery routing algorithm described in the program. The hash table facilitates efficient retrieval and update of package data, which is crucial for the dynamic delivery scheduling and tracking tasks of the delivery service.<br>
 1)	Explain how your data structure accounts for the relationship between the data components you are storing.
-In the Routing Program, I have implemented a Resizable Hash Table combined with the Nearest Neighbor Algorithm to efficiently manage and retrieve package data. This structure supports effective storage and quick retrieval of package details, which are essential for optimizing delivery routes.
-Data Structure Overview:
-Key-Value Pairing: The hash table uses package IDs as unique keys and associates them with corresponding package details (delivery address, deadline, weight, and status) stored as values. This setup ensures that all related data for each package is aggregated and quickly accessible, crucial for making routing decisions.
+In the Routing Program, I have implemented a Resizable Hash Table combined with the Nearest Neighbor Algorithm to efficiently manage and retrieve package data. This structure supports effective storage and quick retrieval of package details, which are essential for optimizing delivery routes.<br>
+<h3>Data Structure Overview:</h3>
+Key-Value Pairing: The hash table uses package IDs as unique keys and associates them with corresponding package details (delivery address, deadline, weight, and status) stored as values. This setup ensures that all related data for each package is aggregated and quickly accessible, crucial for making routing decisions.<br>
 Handling Collisions: To maintain data integrity and ensure accessibility, I employ chaining to resolve collisions within the hash table. Each bucket in the table starts as an empty list, ready to store multiple entries if multiple keys hash to the same index. This approach ensures that the data for each package remains distinct and complete, preserving the accuracy and availability of package information.
 
-Big O Notation for Hash Table Operations:
+<h3>Big O Notation for Hash Table Operations:</h3>
 
 Insertion, Deletion, and Lookup: These operations typically run in O(1) time, contributing to the efficiency of the hash table. In scenarios where many keys hash to the same index—resulting in longer chains—these operations could degrade to O(n), although this is mitigated by the dynamic resizing of the hash table.
 
-Dynamic Adjustability:
+<h3>Dynamic Adjustability:</h3>
 
 The hash table supports dynamic updates crucial for the real-time nature of delivery logistics. For instance, if a package's delivery status changes or an address needs to be updated, the relevant entry can be quickly located using the package ID and adjusted as needed. This adaptability is pivotal for managing deliveries and adjusting routes based on real-time conditions.
-Pseudocode for Using Hash Table with Nearest Neighbor Algorithm:
+Pseudocode for Using Hash Table with Nearest Neighbor Algorithm: <br>
 function initializeHashmap():
     create hashmap
     for each package in package list:
         insert package into hashmap using packageID as key
-
+<br>
 function nearestNeighbor(currentLocation, hashmap):
     nearestPackage = null
     shortestDistance = infinity
@@ -43,7 +43,7 @@ function nearestNeighbor(currentLocation, hashmap):
                 shortestDistance = distance
                 nearestPackage = package
     return nearestPackage
-
+<br>
 function deliverPackages():
     currentLocation = hub
     while packages remain undelivered:
@@ -52,19 +52,19 @@ function deliverPackages():
         update currentLocation to nearestPackage.address
         mark nearestPackage as delivered in hashmap
 
-Scalability and Adaptability:
+<h3>Scalability and Adaptability:</h3>
 The hash table is engineered to scale efficiently with the addition of more packages. As the load factor increases, the table resizes to maintain operational efficiency. Chaining as a collision resolution method ensures that even with a high number of entries, the system can swiftly retrieve and update package information, adapting to changes such as route modifications or urgent delivery needs.
-Conclusion:
-This setup makes the hash table a robust structure for storing package data and aligns perfectly with the operational demands of the Nearest Neighbor Algorithm. Quick access to detailed package information enables the algorithm to efficiently plan and adjust routes, ensuring timely deliveries under varying logistical constraints (Book Details - MIT Press, 2024). The integration of this data structure with the routing algorithm demonstrates a high level of competence in handling the complexities of real-world package delivery systems .
+<h3>Conclusion:</h3>
+This setup makes the hash table a robust structure for storing package data and aligns perfectly with the operational demands of the Nearest Neighbor Algorithm. Quick access to detailed package information enables the algorithm to efficiently plan and adjust routes, ensuring timely deliveries under varying logistical constraints (Book Details - MIT Press, 2024). The integration of this data structure with the routing algorithm demonstrates a high level of competence in handling the complexities of real-world package delivery systems. <br>
 C.	Write an overview of your program in which you do the following:
 1.	Explain the algorithm’s logic using pseudocode.
 
 Algorithm: SimulateDeliveryProcess(trucks)
 Input: List of delivery trucks
-
+<br>
 1. InitializeHashMap(package_hash_map):
    - Create a resizable hashmap to store package information.
-
+<br>
 2. ReadPackageDataFromCSVFiles(package_hash_map):
    - Read package data from CSV files (Packages.csv) and load it into the hashmap.
    - Each package is stored with its unique ID as the key and package details as the value.
