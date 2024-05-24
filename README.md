@@ -224,29 +224,28 @@ Overall, the software design of the Routing Program combines efficiency with mai
 
 <h3>Strengths</h3><br>
 
-<h4>Dynamic Resizing:</h4><br><br>
-1.	I find one of the key strengths of the ResizableDict to be its ability to dynamically adjust its size based on the load factor. This ensures that the hash table remains efficient in terms of access, insertion, and deletion operations even as the number of elements grows. By maintaining a balance between the number of elements and the bucket size, it significantly reduces the likelihood of hash collisions, which can degrade performance.<br><br>
+<h4>Dynamic Resizing:</h4><br>
+1.	I find one of the key strengths of the ResizableDict to be its ability to dynamically adjust its size based on the load factor. This ensures that the hash table remains efficient in terms of access, insertion, and deletion operations even as the number of elements grows. By maintaining a balance between the number of elements and the bucket size, it significantly reduces the likelihood of hash collisions, which can degrade performance.<br>
 <h4>Efficient Access Times:</h4>
 2.	The hash table provides average O(1) time complexity for access, insert, and delete operations under typical conditions. This efficiency is crucial for real-time applications where quick data retrieval and updates are essential. For example, in the package delivery system I've developed, the status of deliveries needs to be updated and queried frequently, making this characteristic extremely valuable.<br>
-<h4>Scalability:</h4><br><br>
-3.	As the hash table automatically resizes, it can handle growth in data smoothly without significant manual adjustments in the underlying data structure. This scalability is advantageous for applications that experience varying loads or need to scale up to accommodate more data over time.<br><br>
-<h4>Space Efficiency:</h4><br><br>
-4.	While resizing increases capacity, the hash table only uses space proportional to the number of entries it contains, ensuring that space is not wasted. This space efficiency is critical in environments where memory resources may be constrained.<br><br>
+<h4>Scalability:</h4><br>
+3.	As the hash table automatically resizes, it can handle growth in data smoothly without significant manual adjustments in the underlying data structure. This scalability is advantageous for applications that experience varying loads or need to scale up to accommodate more data over time.<br>
+<h4>Space Efficiency:</h4><br>
+4.	While resizing increases capacity, the hash table only uses space proportional to the number of entries it contains, ensuring that space is not wasted. This space efficiency is critical in environments where memory resources may be constrained.<br>
 
 <h2>Weaknesses</h2>
 <br>
 <h2>Cost of Resizing:</h2><br>
 
-1.	While resizing helps maintain operational efficiency, the resizing operation itself can be costly. It involves rehashing all existing elements into new buckets, which has a time complexity of O(n). During the resizing process, there can be a temporary performance hit, which might affect system responsiveness, especially if the hash table is very large.<br><br>
-<h4>Worst-Case Time Complexity:</h4><br><br>
-2.	In the worst case, where many elements hash to the same bucket (high collision scenario), the time complexity for access and update operations can degrade to O(n). While this scenario is less likely with a good hash function and proper load management, it is still a potential weakness that can impact performance under certain conditions.<br><br>
-<h4>Complexity in Concurrency:</h4><br><br>
+1.	While resizing helps maintain operational efficiency, the resizing operation itself can be costly. It involves rehashing all existing elements into new buckets, which has a time complexity of O(n). During the resizing process, there can be a temporary performance hit, which might affect system responsiveness, especially if the hash table is very large.<br>
+<h4>Worst-Case Time Complexity:</h4><br>
+2.	In the worst case, where many elements hash to the same bucket (high collision scenario), the time complexity for access and update operations can degrade to O(n). While this scenario is less likely with a good hash function and proper load management, it is still a potential weakness that can impact performance under certain conditions.<br>
+<h4>Complexity in Concurrency:</h4><br>
 3.	Managing concurrency in a hash table can be challenging, especially during resizing operations. Synchronization mechanisms are necessary to ensure data consistency, which can complicate the implementation and may reduce performance in multi-threaded environments.<br>
-<h4>Dependence on Hash Function:</h4><br><br>
-4.	The performance of the hash table heavily depends on the quality of the hash function used. A poor hash function can lead to increased collisions, undermining the efficiency advantages of the hash table. Ensuring a uniform distribution of hash values is critical but can be challenging depending on the data characteristics.<br><br>
-<h4>Handling of Large Data Values:</h4><br><br>
-5.	If the data elements stored in the hash table are large, the resizing operation can become more resource-intensive, both in terms of time and memory usage. This can be a drawback in systems where data payloads are substantial.<br><br>
-
+<h4>Dependence on Hash Function:</h4><br>
+4.	The performance of the hash table heavily depends on the quality of the hash function used. A poor hash function can lead to increased collisions, undermining the efficiency advantages of the hash table. Ensuring a uniform distribution of hash values is critical but can be challenging depending on the data characteristics.<br>
+<h4>Handling of Large Data Values:</h4><br>
+5.	If the data elements stored in the hash table are large, the resizing operation can become more resource-intensive, both in terms of time and memory usage. This can be a drawback in systems where data payloads are substantial.<br>
 In summary, the ResizableDict in my Routing Program offers significant strengths in terms of scalability, efficiency, and dynamic sizing, making it well-suited for the program’s needs. However, I am always mindful of its weaknesses, especially regarding performance under high collision conditions and during resizing, to optimize its use and ensure robust system performance.<br>
 
 <h2>7.  Justify the choice of a key for efficient delivery management from the following components:</h2>
@@ -258,19 +257,19 @@ In summary, the ResizableDict in my Routing Program offers significant strengths
 •	package ID<br>
 •	package weight<br>
 •	delivery status (i.e., at the hub, en route, or delivered), including the delivery time
-<br><br>
+<br>
 <h2>Uniqueness:</h2>
 
-1.	The package ID is unique to each package, which eliminates the possibility of key collisions within the data storage system. This uniqueness ensures that each query or update operation targets precisely the intended package without confusion or error.<br><br>
-<h4>Efficiency in Access and Updates:</h4><br><br>
-2.	Using package ID as the key allows for constant-time complexity (O(1) on average) for accessing, updating, or deleting package information in the hash map (ResizableDict). This is because hash tables provide extremely fast access to elements when the keys distribute uniformly, as they do with unique identifiers like package IDs.<br><br>
-<h4>Integration with Other System Operations:</h4><br><br>
+1.	The package ID is unique to each package, which eliminates the possibility of key collisions within the data storage system. This uniqueness ensures that each query or update operation targets precisely the intended package without confusion or error.<br>
+<h4>Efficiency in Access and Updates:</h4><br>
+2.	Using package ID as the key allows for constant-time complexity (O(1) on average) for accessing, updating, or deleting package information in the hash map (ResizableDict). This is because hash tables provide extremely fast access to elements when the keys distribute uniformly, as they do with unique identifiers like package IDs.<br>
+<h4>Integration with Other System Operations:</h4><br>
 3.	Package ID serves as a straightforward reference that can be used across various components of the system, such as during the loading and unloading of packages onto trucks, during the tracking of packages, and when updating delivery status. This integration simplifies the system’s architecture by reducing the need for complex joins or searches across different attributes.<br><br>
-<h4>Independence from Variable Data:</h4><br><br>
+<h4>Independence from Variable Data:</h4><br>
 4.	Other potential keys such as delivery address, deadline, or status could change over the lifecycle of a delivery (e.g., a change in delivery address due to customer request or an update in status as it moves from "at the hub" to "delivered"). Using a mutable attribute as a key could complicate the management of data integrity and consistency. In contrast, package ID is immutable – once assigned, it does not change, which makes it ideal for stable and reliable indexing.<br><br>
-<h4>Irrelevance of Other Attributes to Indexing Efficiency:</h4><br><br>
-5.	Attributes like delivery address, city, zip code, and deadline are important for sorting and routing decisions but are not efficient for quick data retrieval as keys because they are not unique and can be shared by multiple packages, potentially leading to inefficiencies and the need for further filtering.<br><br>
-6.	Package weight and delivery status, including time, are attributes subject to frequent updates and thus are unsuitable for use as primary keys. Their use as keys would lead to inefficiencies in rehashing or reindexing the data as these values change.<br><br>
+<h4>Irrelevance of Other Attributes to Indexing Efficiency:</h4><br>
+5.	Attributes like delivery address, city, zip code, and deadline are important for sorting and routing decisions but are not efficient for quick data retrieval as keys because they are not unique and can be shared by multiple packages, potentially leading to inefficiencies and the need for further filtering.<br>
+6.	Package weight and delivery status, including time, are attributes subject to frequent updates and thus are unsuitable for use as primary keys. Their use as keys would lead to inefficiencies in rehashing or reindexing the data as these values change.<br>
 
 <h2>Summary</h2>
 <br>
