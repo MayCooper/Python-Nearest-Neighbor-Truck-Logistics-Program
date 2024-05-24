@@ -59,7 +59,6 @@ function deliverPackages():
 <pre>
 Algorithm: SimulateDeliveryProcess(trucks)
 Input: List of delivery trucks
-
 1. InitializeHashMap(package_hash_map):
    - Create a resizable hashmap to store package information.
 2. ReadPackageDataFromCSVFiles(package_hash_map):
@@ -93,7 +92,6 @@ Input: List of delivery trucks
    - If the user chooses to track:
        - Prompt user to enter time (HH:MM) for package status update.
        - Based on user input, track single package or provide general status report for all packages.
-
 End of Algorithm
 </pre>
 
