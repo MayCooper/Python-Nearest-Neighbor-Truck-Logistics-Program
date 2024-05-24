@@ -1,6 +1,7 @@
 # Python-Nearest-Neighbor-Truck-Logistics-Program
 The Python Logistics Planner optimizes routing for a delivery service using the Nearest Neighbor Algorithm and a dynamic hash table. This solution minimizes travel distances and adapts to real-time changes, ensuring efficient and timely deliveries. Built in Python, the program features a modular design for scalability and easy maintenance.
 
+<h1>Project Overview</h1>
 <h2>A. Identify a named self-adjusting algorithm (e.g., nearest neighbor algorithm, greedy algorithm) that could be used to create your program to deliver the packages.</h2>
 <p>I chose the Nearest Neighbor Algorithm for the Routing Program for its straightforward method that focuses on minimizing travel distances between delivery points. Starting from a central hub, the algorithm efficiently selects the nearest unvisited destination, ensuring routes are planned both logically and efficiently.</p>
 <p>This approach is not only easy to implement but also highly adaptable to dynamic routing changes, such as varying delivery deadlines and special handling requirements.</p>
