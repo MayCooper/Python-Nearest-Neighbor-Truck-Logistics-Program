@@ -29,7 +29,6 @@ function initializeHashmap():
     create hashmap
     for each package in package list:
         insert package into hashmap using packageID as key
-
 function nearestNeighbor(currentLocation, hashmap):
     nearestPackage = null
     shortestDistance = infinity
@@ -41,7 +40,6 @@ function nearestNeighbor(currentLocation, hashmap):
                 shortestDistance = distance
                 nearestPackage = package
     return nearestPackage
-
 function deliverPackages():
     currentLocation = hub
     while packages remain undelivered:
