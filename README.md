@@ -57,23 +57,22 @@ The hash table is engineered to scale efficiently with the addition of more pack
 This setup makes the hash table a robust structure for storing package data and aligns perfectly with the operational demands of the Nearest Neighbor Algorithm. Quick access to detailed package information enables the algorithm to efficiently plan and adjust routes, ensuring timely deliveries under varying logistical constraints (Book Details - MIT Press, 2024). The integration of this data structure with the routing algorithm demonstrates a high level of competence in handling the complexities of real-world package delivery systems. <br><br>
 <h3>C.	Write an overview of your program in which you do the following:</h3><br>
 <h4>1.	Explain the algorithm’s logic using pseudocode.</h4><br>
-
 Algorithm: SimulateDeliveryProcess(trucks)<br>
 Input: List of delivery trucks<br>
-<br><br>
+<br>
 1. InitializeHashMap(package_hash_map):<br>
    - Create a resizable hashmap to store package information.<br>
-<br><br>
+<br>
 2. ReadPackageDataFromCSVFiles(package_hash_map):<br>
    - Read package data from CSV files (Packages.csv) and load it into the hashmap.<br>
    - Each package is stored with its unique ID as the key and package details as the value.<br>
-<br><br>
+<br>
 3. InitializeTrucks(trucks):<br>
    - Initialize delivery trucks with their characteristics such as capacity, speed, starting location, leave time, and assigned packages.
 <br><br>
 4. AssignPackagesToTrucks(trucks):<br>
    - Assign packages to trucks for delivery based on predetermined assignments.<br>
-<br><br>
+<br>
 5. For each truck in trucks:<br>
    5.1. RetrieveUndeliveredPackages(truck):<br>
        - Retrieve undelivered packages for the current truck from the hashmap.<br>
@@ -90,10 +89,10 @@ Input: List of delivery trucks<br>
            - Remove delivered package from the list of undelivered packages.<br>
    5.4. UpdateTruckLeaveTime(truck):<br>
        - Update truck's leave time based on the time it returns after delivering all packages.<br>
-<br><br>
+<br>
 6. CalculateTotalMileage(trucks):<br>
    - Sum up the distance traveled by each truck to get the total mileage traveled by all trucks.<br>
-<br><br>
+<br>
 7. ProvideUserInterfaceForPackageTracking():<br>
    - Display the main menu of the delivery management system.<br>
    - Prompt the user to begin tracking package status.<br>
